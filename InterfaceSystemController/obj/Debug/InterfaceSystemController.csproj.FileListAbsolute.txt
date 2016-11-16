@@ -1,0 +1,9 @@
+C:\Users\Luna\Desktop\ASM\DevicesSystemController\InterfaceSystemController\bin\Debug\InterfaceSystemController.exe.config
+C:\Users\Luna\Desktop\ASM\DevicesSystemController\InterfaceSystemController\bin\Debug\InterfaceSystemController.exe
+C:\Users\Luna\Desktop\ASM\DevicesSystemController\InterfaceSystemController\bin\Debug\InterfaceSystemController.pdb
+C:\Users\Luna\Desktop\ASM\DevicesSystemController\InterfaceSystemController\obj\Debug\InterfaceSystemController.csprojResolveAssemblyReference.cache
+C:\Users\Luna\Desktop\ASM\DevicesSystemController\InterfaceSystemController\obj\Debug\InterfaceSystemController.Form1.resources
+C:\Users\Luna\Desktop\ASM\DevicesSystemController\InterfaceSystemController\obj\Debug\InterfaceSystemController.Properties.Resources.resources
+C:\Users\Luna\Desktop\ASM\DevicesSystemController\InterfaceSystemController\obj\Debug\InterfaceSystemController.csproj.GenerateResource.Cache
+C:\Users\Luna\Desktop\ASM\DevicesSystemController\InterfaceSystemController\obj\Debug\InterfaceSystemController.exe
+C:\Users\Luna\Desktop\ASM\DevicesSystemController\InterfaceSystemController\obj\Debug\InterfaceSystemController.pdb

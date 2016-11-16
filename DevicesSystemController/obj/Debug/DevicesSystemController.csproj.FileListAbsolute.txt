@@ -1,0 +1,6 @@
+C:\Users\Luna\Desktop\ASM\DevicesSystemController\DevicesSystemController\bin\DevicesSystemController.dll.config
+C:\Users\Luna\Desktop\ASM\DevicesSystemController\DevicesSystemController\bin\DevicesSystemController.dll
+C:\Users\Luna\Desktop\ASM\DevicesSystemController\DevicesSystemController\bin\DevicesSystemController.pdb
+C:\Users\Luna\Desktop\ASM\DevicesSystemController\DevicesSystemController\obj\Debug\DevicesSystemController.dll
+C:\Users\Luna\Desktop\ASM\DevicesSystemController\DevicesSystemController\obj\Debug\DevicesSystemController.pdb
+C:\Users\Luna\Desktop\ASM\DevicesSystemController\DevicesSystemController\obj\Debug\DevicesSystemController.csprojResolveAssemblyReference.cache
