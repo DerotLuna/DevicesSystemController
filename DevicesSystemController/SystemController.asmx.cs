@@ -44,21 +44,21 @@ namespace DevicesSystemController
                     workerThread = new Thread(_delegate);
                     workerThread.Start();
                    /* archive.crear(name, "Buenos dias", true, true, false);*/
-                    _value = "CREADO";
+                    _value = "ARCHIVO: " + name + "CREADO";
                 }
                 catch { }
                 workerThread.Abort(); 
                 return _value;
             }
-            else
+            else if(action == "modificar")
             {
                 try
                 {
-                    ThreadStart _delegate = new ThreadStart(() => device_Receiver(name, action));
+                    ThreadStart _delegate = new ThreadStart(() => chek_Lock(name, action));
                     workerThread = new Thread(_delegate);
                     workerThread.Start();
                 }
-                catch { _value = "ERROR"; }
+                catch { _value = "ERROR EN HILO"; }
 
                 workerThread.Join();
                 archive.set_bool(name, 5, false);
@@ -66,35 +66,27 @@ namespace DevicesSystemController
                 workerThread.Abort();
                 return _value;
             }
-        }
-
-        public void device_Receiver(string ID, string action)
-        {
-            Archives archive = new Archives(route);
-            try
+            else /*eliminar*/
             {
-                int counter_Exit = 0;
-                while (counter_Exit < devices.Count)
+                try
                 {
-                    if (ID == devices[counter_Exit])
-                    {
-                        chek_Lock(ID, action, route);
-                    }
-
-                    counter_Exit++;
+                    ThreadStart _delegate = new ThreadStart(() => chek_Lock(name, action));
+                    workerThread = new Thread(_delegate);
+                    workerThread.Start();
                 }
+                catch { _value = "ERROR EN HILO"; }
+                return _value;
             }
-            catch (Exception e) { }
         }
 
-        public void chek_Lock(string ID, string action, string route)
+        public void chek_Lock(string ID, string action)
         {
             Archives archive = new Archives(route);
             bool status = archive.get_bool(ID, 3);
 
             if (status == true) /* Si no esta bloqueado, hago la accion que se requiere */
             {
-                _value = device_Action(ID, action, route);
+                _value = device_Action(ID, action);
             }
 
             else /* Si no, hago un while infinito hasta que el dispotivo se libere */
@@ -106,11 +98,11 @@ namespace DevicesSystemController
                     if (status == true)
                         exit = true;
                 }
-                _value = device_Action(ID, action, route);
+                _value = device_Action(ID, action);
             }
         }
 
-        public string device_Action(string ID, string action, string route)
+        public string device_Action(string ID, string action)
         {
             /*ACTION VA A LLEVAR:
              -READ QUE INDICA QUE EL ARCHIVO SERA LEIDO
@@ -140,7 +132,7 @@ namespace DevicesSystemController
                 return archive.extraer_Contenido(ID);
 
             }
-            else
+            else if(action == "modificar")
             {
                 while (true)
                 {
@@ -151,6 +143,11 @@ namespace DevicesSystemController
                     else if (!operability)
                         return "DISPOSITIVO DESCONECTADO";
                 }
+            }
+            else /*ELIMINAR*/
+            {
+                archive.delete(ID);
+                return "ARCHIVO: " + ID + "HA SIDO ELIMINADO";
             }
         }
 
