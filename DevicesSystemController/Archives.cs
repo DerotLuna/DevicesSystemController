@@ -67,16 +67,20 @@ namespace DevicesSystemController
         }
         public bool get_bool(string id, int pedido)
         {
-            StreamReader lectura = File.OpenText(route + "\\" + id + ".txt");
-            string linea = null;
-            bool entrega;
-            int i = 0;
-            while (!lectura.EndOfStream)
+            try
             {
+                StreamReader lectura = File.OpenText(route + "\\" + id + ".txt");
+                string linea = null;
+                bool entrega;
+                int i = 0;
+                while (!lectura.EndOfStream)
+                {
 
-                linea = lectura.ReadLine();
-                if (++i == pedido) { entrega = Convert.ToBoolean(linea); lectura.Close(); return (entrega); } ;
+                    linea = lectura.ReadLine();
+                    if (++i == pedido) { entrega = Convert.ToBoolean(linea); lectura.Close(); return (entrega); };
+                }
             }
+            catch { }
             return (false);
         }
 

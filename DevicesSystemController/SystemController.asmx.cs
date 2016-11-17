@@ -43,8 +43,8 @@ namespace DevicesSystemController
                     ThreadStart _delegate = new ThreadStart(() => archive.crear(name, "Buenos dias", true, true, false));
                     workerThread = new Thread(_delegate);
                     workerThread.Start();
-                   /* archive.crear(name, "Buenos dias", true, true, false);*/
-                    _value = "ARCHIVO: " + name + "CREADO";
+                    workerThread.Join();
+                    _value = "ARCHIVO: " + name + " CREADO";
                 }
                 catch { }
                 workerThread.Abort(); 
@@ -75,6 +75,8 @@ namespace DevicesSystemController
                     workerThread.Start();
                 }
                 catch { _value = "ERROR EN HILO"; }
+                workerThread.Join();
+                workerThread.Abort();
                 return _value;
             }
         }
@@ -147,7 +149,7 @@ namespace DevicesSystemController
             else /*ELIMINAR*/
             {
                 archive.delete(ID);
-                return "ARCHIVO: " + ID + "HA SIDO ELIMINADO";
+                return "ARCHIVO: " + ID + " HA SIDO ELIMINADO";
             }
         }
 
