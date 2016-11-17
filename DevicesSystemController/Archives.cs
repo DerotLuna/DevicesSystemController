@@ -134,6 +134,7 @@ namespace DevicesSystemController
                 linea = lectura.ReadLine();
                 auxiliar.Add(linea); 
             }
+            lectura.Close();
             return auxiliar;
         }
 

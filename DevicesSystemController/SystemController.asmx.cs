@@ -39,16 +39,15 @@ namespace DevicesSystemController
             if (action == "create")
             {
                 try
-                {/*
-                    ThreadStart _delegate = new ThreadStart(() => create_Archive(route, name));
+                {
+                    ThreadStart _delegate = new ThreadStart(() => archive.crear(name, "Buenos dias", true, true, false));
                     workerThread = new Thread(_delegate);
                     workerThread.Start();
-                    workerThread.Join(); */
-                    archive.crear(name, "Buenos dias", true, true, false);
+                   /* archive.crear(name, "Buenos dias", true, true, false);*/
                     _value = "CREADO";
                 }
                 catch { }
-                workerThread.Abort();
+                workerThread.Abort(); 
                 return _value;
             }
             else
@@ -58,24 +57,15 @@ namespace DevicesSystemController
                     ThreadStart _delegate = new ThreadStart(() => device_Receiver(name, action));
                     workerThread = new Thread(_delegate);
                     workerThread.Start();
-                    workerThread.Join();
                 }
                 catch { _value = "ERROR"; }
+
+                workerThread.Join();
+                archive.set_bool(name, 5, false);
+                archive.set_bool(name, 3, true);
                 workerThread.Abort();
                 return _value;
             }
-        }
-        
-
-
-        public void create_Archive(string route, string name)
-        {
-            try {
-                Archives archive = new Archives(route);
-                archive.crear(name, "Buenos dias", true, true, false);
-            }
-
-            catch (Exception e) { }
         }
 
         public void device_Receiver(string ID, string action)
@@ -114,7 +104,7 @@ namespace DevicesSystemController
                 {
                     Thread.Sleep(1);
                     if (status == true)
-                        exit = true;  
+                        exit = true;
                 }
                 _value = device_Action(ID, action, route);
             }
@@ -140,14 +130,13 @@ namespace DevicesSystemController
                     {
                         archive.set_bool(ID, 5, true);
                         archive.set_bool(ID, 3, false);
+
                         exit = true;
                     }
                     else if (!operability)
                         return "DISPOSITIVO DESCONECTADO"; 
                 }
-                workerThread.Join();
-                archive.set_bool(ID, 5, false);
-                archive.set_bool(ID, 3, true);
+                
                 return archive.extraer_Contenido(ID);
 
             }
