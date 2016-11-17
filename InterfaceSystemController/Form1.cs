@@ -14,13 +14,14 @@ namespace InterfaceSystemController
     public partial class Form1 : Form
     {
 
-        ServiceReference.SystemControllerSoapClient service = new ServiceReference.SystemControllerSoapClient();
+        ServiceReference.SystemControllerSoapClient service;
+        
         private string routeArchive;
 
         public Form1(string route)
         {
             InitializeComponent();
-           /* service = new ServiceReference.SystemControllerSoapClient();*/
+            service = new ServiceReference.SystemControllerSoapClient();
             this.routeArchive = route;
         }
 
