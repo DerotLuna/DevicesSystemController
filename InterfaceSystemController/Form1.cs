@@ -28,7 +28,7 @@ namespace InterfaceSystemController
         private void button1_Click(object sender, EventArgs e)
         {
             string message = service.initialize_List(routeArchive, deviceName.Text, "create");
-            richTextBox1.Text += message;
+            richTextBox1.Text += message;    
         }
 
         private void label1_Click(object sender, EventArgs e)

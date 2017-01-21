@@ -1,0 +1,6 @@
+DiscoDuro3
+DiscoDuro
+True
+True
+False
+Buenos dias
